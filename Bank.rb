@@ -41,10 +41,9 @@ class Bank
     @list_of_members.each do |member|
       if member.first_name == first_name && member.last_name == last_name
         return member
-      else
-        puts "Sorry, there is no member with that name."
       end
     end
+    return "Sorry, there is no member with that name."
   end
 
 end
