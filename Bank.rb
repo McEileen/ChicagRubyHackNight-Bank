@@ -19,7 +19,8 @@
 require_relative 'member'
 class Bank
   @@num_existing_banks = 0
-  attr_reader :list_of_members, :bank_id
+  attr_reader :bank_id
+  attr_accessor :list_of_members
 
   def initialize
     @list_of_members = []
@@ -33,6 +34,16 @@ class Bank
   def display_members
     @list_of_members.each_with_object([]) do |member, list|
         list << (member.member_id.to_s + " " + member.first_name + " " + member.last_name)
+    end
+  end
+
+  def find_member_by_name(first_name, last_name)
+    @list_of_members.each do |member|
+      if member.first_name == first_name && member.last_name == last_name
+        return member
+      else
+        puts "Sorry, there is no member with that name."
+      end
     end
   end
 
