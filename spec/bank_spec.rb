@@ -21,5 +21,12 @@ describe Bank do
     end
   end
 
+  describe '#display_members' do
+    it 'should display all members of the bank' do
+      new_bank.add_member("Bob", "Stevenson")
+      new_bank.add_member("Jana", "Phillips")
+      expect(new_bank.display_members).to eq(["Bob Stevenson", "Jana Phillips"])
+    end
+  end
 
 end

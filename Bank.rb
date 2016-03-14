@@ -28,6 +28,10 @@ class Bank
     @list_of_members << Member.new(first_name, last_name)
   end
 
-
+  def display_members
+    @list_of_members.each_with_object([]) do |member, list|
+        list << (member.first_name + " " + member.last_name)
+    end
+  end
 
 end
