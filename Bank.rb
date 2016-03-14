@@ -18,16 +18,22 @@
 
 require_relative 'member'
 class Bank
-  attr_reader :list_of_members
+  @@num_existing_banks = 0
+  attr_reader :list_of_members, :bank_id
 
   def initialize
     @list_of_members = []
+    @bank_id = @@num_existing_banks + 1
   end
 
   def add_member(first_name, last_name)
     @list_of_members << Member.new(first_name, last_name)
   end
 
-
+  def display_members
+    @list_of_members.each_with_object([]) do |member, list|
+        list << (member.member_id.to_s + " " + member.first_name + " " + member.last_name)
+    end
+  end
 
 end
