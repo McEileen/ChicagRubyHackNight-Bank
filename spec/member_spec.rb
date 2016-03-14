@@ -10,4 +10,10 @@ describe Member do
     end
   end
 
+    describe "last_name" do
+    it 'should be readable' do
+      expect(grace_hopper.last_name).to eq("Hopper")
+    end
+  end
+
 end
