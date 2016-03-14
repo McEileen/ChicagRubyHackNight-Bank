@@ -1,3 +1,4 @@
+require_relative 'account'
 class Member
   @@num_existing_members = 0
   attr_reader :member_accounts, :first_name, :last_name, :member_id
@@ -11,7 +12,7 @@ class Member
   end
 
   def open_new_account
-    # need to fill in method
+    @member_accounts << Account.new
   end
 
 end
