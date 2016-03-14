@@ -25,7 +25,7 @@ describe Bank do
     it 'should display all members of the bank' do
       new_bank.add_member("Bob", "Stevenson")
       new_bank.add_member("Jana", "Phillips")
-      expect(new_bank.display_members).to eq(["Bob Stevenson", "Jana Phillips"])
+      expect(new_bank.display_members).to eq(["2 Bob Stevenson", "3 Jana Phillips"])
     end
   end
 
