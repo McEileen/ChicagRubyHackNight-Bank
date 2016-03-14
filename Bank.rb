@@ -46,4 +46,13 @@ class Bank
     return "Sorry, there is no member with that name."
   end
 
+  def find_member_by_id(member_id)
+    @list_of_members.each do |member|
+      if member.member_id == member_id
+        return member
+      end
+    end
+    return "Sorry, there is no member with that name."
+  end
+
 end

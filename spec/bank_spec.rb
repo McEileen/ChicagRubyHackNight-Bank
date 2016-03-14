@@ -39,8 +39,20 @@ describe Bank do
     it "should give an error message if you search for a member that doesn't exist" do
       new_bank.add_member("Joey", "James")
       expect(new_bank.find_member_by_name("Gavin", "Newton")).to eq("Sorry, there is no member with that name.")
+    end
   end
 
+  describe "#find_member_by_id" do
+    it 'should return a member when you search for a member id that exists' do
+      new_bank.add_member("Sunny", "Bono")
+      expect(new_bank.find_member_by_id(7)).to eq(new_bank.list_of_members.pop)
+    end
+    it "should give an error message if you search for a member id that doesn't exist" do
+      new_bank.add_member("Cher", "N/A")
+      expect(new_bank.find_member_by_id(9)).to eq("Sorry, there is no member with that name.")
+    end
   end
+
+
 
 end
