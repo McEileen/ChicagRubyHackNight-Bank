@@ -20,11 +20,12 @@ require_relative 'member'
 class Bank
   @@num_existing_banks = 0
   attr_reader :bank_id
-  attr_accessor :list_of_members
+  attr_accessor :list_of_members, :list_of_accts
 
   def initialize
     @list_of_members = []
     @bank_id = @@num_existing_banks + 1
+    @list_of_accts = []
   end
 
   def add_member(first_name, last_name)
@@ -53,6 +54,10 @@ class Bank
       end
     end
     return "Sorry, there is no member with that name."
+  end
+
+  def calculate_total_money_all_accts
+
   end
 
 end
