@@ -1,3 +1,4 @@
+require_relative 'transaction'
 class Account
   @@num_existing_accounts = 0
   attr_reader :member_id, :bank_id

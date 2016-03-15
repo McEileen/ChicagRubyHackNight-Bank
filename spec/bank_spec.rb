@@ -1,5 +1,6 @@
 require_relative '../Bank'
 require_relative '../Member'
+require_relative '../Account'
 
 describe Bank do
   let(:new_bank) { Bank.new }
@@ -50,6 +51,64 @@ describe Bank do
     it "should give an error message if you search for a member id that doesn't exist" do
       new_bank.add_member("Cher", "N/A")
       expect(new_bank.find_member_by_id(9)).to eq("Sorry, there is no member with that name.")
+    end
+  end
+
+  describe '#display_all_accts' do
+    it 'should return an array before accounts are added' do
+      expect(new_bank.display_all_accts).to be_an(Array)
+    end
+    it 'should return an array after accounts are added' do
+      new_bank.add_member("Whitney", "Houston")
+      whitney = new_bank.list_of_members[0]
+      whitney.open_new_account
+      whitney.open_new_account
+      whitney.open_new_account
+      first_account = whitney.member_accounts[0]
+      last_account = whitney.member_accounts.pop
+      first_account.add_money(45)
+      last_account.add_money(100)
+      expect(new_bank.display_all_accts).to be_an(Array)
+    end
+    it 'should return an array after accounts are added and money is added to the accounts' do
+      new_bank.add_member("Whitney", "Houston")
+      whitney = new_bank.list_of_members[0]
+      whitney.open_new_account
+      whitney.open_new_account
+      whitney.open_new_account
+      first_account = whitney.member_accounts[0]
+      last_account = whitney.member_accounts.pop
+      first_account.add_money(45)
+      last_account.add_money(100)
+      expect(new_bank.display_all_accts).to be_an(Array)
+    end
+  end
+
+
+  describe '#calculate_total_money_all_accts' do
+    it 'should return an integer after accounts are added' do
+      new_bank.add_member("Whitney", "Houston")
+      whitney = new_bank.list_of_members[0]
+      whitney.open_new_account
+      whitney.open_new_account
+      whitney.open_new_account
+      first_account = whitney.member_accounts[0]
+      last_account = whitney.member_accounts.pop
+      first_account.add_money(45)
+      last_account.add_money(100)
+      expect(new_bank.calculate_total_money_all_accts).to be_an(Integer)
+    end
+    it 'should equal the total amount of money stored in the bank' do
+      new_bank.add_member("Whitney", "Houston")
+      whitney = new_bank.list_of_members[0]
+      whitney.open_new_account
+      whitney.open_new_account
+      whitney.open_new_account
+      first_account = whitney.member_accounts[0]
+      last_account = whitney.member_accounts.last
+      first_account.add_money(45)
+      last_account.add_money(100)
+      expect(new_bank.calculate_total_money_all_accts).to eq(145)
     end
   end
 
