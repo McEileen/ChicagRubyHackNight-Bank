@@ -57,13 +57,19 @@ class Bank
   end
 
   def display_all_accts
-    @list_of_members.each_with_object([]) do |member, all_accts|
-      all_accts << (member.member_accounts)
-    end.flatten
+    @list_of_members.each do |member|
+      list_of_accts << member.member_accounts
+    end
+    @list_of_accts = @list_of_accts.flatten
   end
 
   def calculate_total_money_all_accts
-    display_all_accts.reduce(:+)
+    display_all_accts
+    total = 0
+    @list_of_accts.each do |acct|
+      total = total + acct.value
+    end
+    total
   end
 
 end
