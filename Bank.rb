@@ -56,8 +56,14 @@ class Bank
     return "Sorry, there is no member with that name."
   end
 
-  def calculate_total_money_all_accts
+  def display_all_accts
+    @list_of_members.each_with_object([]) do |member, all_accts|
+      all_accts << (member.member_accounts)
+    end.flatten
+  end
 
+  def calculate_total_money_all_accts
+    display_all_accts.reduce(:+)
   end
 
 end
