@@ -23,4 +23,11 @@ describe Member do
     end
   end
 
+  describe "#open_new_account" do
+    it 'should increase the length of an array by one' do
+      num_accounts = grace_hopper.member_accounts.length
+      expect{ grace_hopper.open_new_account }.to change(grace_hopper.member_accounts, :length).by(1)
+    end
+  end
+
 end
