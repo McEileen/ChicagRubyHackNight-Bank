@@ -67,7 +67,7 @@ class Bank
     display_all_accts
     total = 0
     @list_of_accts.each do |acct|
-      total = total + acct.value
+      total += acct.value
     end
     total
   end
