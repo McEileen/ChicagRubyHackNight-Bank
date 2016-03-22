@@ -8,7 +8,7 @@ class Transaction
   def initialize(money)
     @money = money
     @transaction_id = @@num_existing_transactions + 1
-    @@num_existing_transactions = @@num_existing_transactions + 1
+    @@num_existing_transactions += 1
     @datetime_created = Time.now
   end
 
