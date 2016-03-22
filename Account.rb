@@ -10,12 +10,12 @@ class Account
   end
 
   def add_money(money)
-    @value = @value + money
+    @value += money
     @transaction_history = @transaction_history << Transaction.new(money)
   end
 
   def remove_money(money)
-    @value = @value - money
+    @value -= money
     @transaction_history = @transaction_history << Transaction.new(money)
   end
 
